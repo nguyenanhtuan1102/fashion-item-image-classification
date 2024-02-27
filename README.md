@@ -23,10 +23,18 @@ import random
 from tensorflow.keras import layers
 ```
 
-### 2. Load data:
+### 2. Load data and set labels:
 
 The pre-loaded Fashion-MNIST dataset is downloaded using Keras utilities.
 The dataset is split into training and testing sets, with X representing the image data and y representing the corresponding labels.
+
+- This line loads the pre-existing Fashion-MNIST dataset using Keras utilities.
+- The data is split into two sets:
+  - Training set (X_train, y_train): Used to train the model.
+  - Testing set (X_test, y_test): Used to evaluate the model's performance after training.
+- X represents the image data, while y represents the corresponding labels (categories of clothing items).
+- class_name: A list containing the names of the ten clothing categories in the dataset.
+- class_nums: The number of classes (categories), which is 10 in this case.
 
 ``` bash
 # load data
@@ -60,10 +68,13 @@ plot_data(X_train, y_train)
 
 ### 4. Preprocessing data:
 
-Images are converted to floating-point values for better compatibility with the model.
-Images are normalized by dividing each pixel value by 255 to bring the data into the range of [0, 1].
-A channel dimension (1) is added to the image data using np.expand_dims to match the expected input format for convolutional neural networks (CNNs).
-Labels are one-hot encoded using keras.utils.to_categorical to represent each class as a probability vector.
+This section involves several data preparation steps:
+- Normalization:
+    - Converts the image data from unsigned integers (0-255) to floating-point values (0-1) using astype(np.float32) and division by 255. This normalization helps improve the training process.
+- Adding Channel Dimension:
+    - Reshapes the data to add a channel dimension (typically representing colors in RGB images) even though the Fashion-MNIST dataset is grayscale. This is achieved using np.expand_dims(axis=-1).
+- One-Hot Encoding:
+    - Converts the class labels (integers representing categories) into one-hot encoded vectors using keras.utils.to_categorical. This is necessary because the model uses categorical crossentropy loss, which assumes the labels are probability distributions.
 
 ``` bash
 # Encoding dataset
