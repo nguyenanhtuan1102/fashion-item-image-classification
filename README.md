@@ -1,15 +1,15 @@
 # Introduction:
 
-This repository contains Python code that utilizes TensorFlow and Keras to build a machine learning model for classifying images from the Fashion-MNIST dataset. The model identifies various clothing items such as t-shirts, trousers, dresses, and more.
+This repository contains Python code that utilizes ```TensorFlow``` and ```Keras``` to build a machine learning model for classifying images from the Fashion-MNIST dataset. The model identifies various clothing items such as t-shirts, trousers, dresses, and more.
 
 ![12](https://github.com/tuanng1102/classify-image-with-neural-network-on-fashion-mnist-dataset/assets/147653892/7e1375cd-47be-45f1-bcb8-92d0cbb1224f)
 
 # Dependencies:
 
-- TensorFlow (version compatible with your project)
-- Keras (typically installed with TensorFlow)
-- matplotlib
-- NumPy
+- ```tensorflow```
+- ```keras```
+- ```matplotlib```
+- ```numpy```
 
 # Explanation of the Code:
 
@@ -27,21 +27,24 @@ from tensorflow.keras import layers
 
 ### 2. Load data and set labels:
 
-The pre-loaded Fashion-MNIST dataset is downloaded using Keras utilities.
-The dataset is split into training and testing sets, with X representing the image data and y representing the corresponding labels.
+- The pre-loaded Fashion-MNIST dataset is downloaded using ```keras``` utilities.
+- The dataset is split into training and testing sets, with ```X``` representing the image data and ```y``` representing the corresponding labels.
 
-- This line loads the pre-existing Fashion-MNIST dataset using Keras utilities.
+- This line loads the pre-existing Fashion-MNIST dataset using ```keras``` utilities.
 - The data is split into two sets:
-  - Training set (X_train, y_train): Used to train the model.
-  - Testing set (X_test, y_test): Used to evaluate the model's performance after training.
-- X represents the image data, while y represents the corresponding labels (categories of clothing items).
-- class_name: A list containing the names of the ten clothing categories in the dataset.
-- class_nums: The number of classes (categories), which is 10 in this case.
+  - Training set ```X_train```, ```y_train```: Used to train the model.
+  - Testing set ```X_test```, ```y_test```: Used to evaluate the model's performance after training.
+- ```X``` represents the image data, while ```y``` represents the corresponding labels (categories of clothing items).
 
 ``` bash
 # load data
 (X_train, y_train), (X_test, y_test) = keras.datasets.fashion_mnist.load_data()
+```
 
+- class_name: A list containing the names of the ten clothing categories in the dataset.
+- class_nums: The number of classes (categories), which is 10 in this case.
+
+``` bash
 # Set label
 class_name = ["T-shirt/top", "Trouser", "Pullover", "Dress", "Coat",
               "Sandal", "Shirt", "Sneaker", "Bag", "Ankle Boot"]
@@ -74,11 +77,11 @@ plot_data(X_train, y_train)
 
 This section involves several data preparation steps:
 - Normalization:
-    - Converts the image data from unsigned integers (0-255) to floating-point values (0-1) using astype(np.float32) and division by 255. This normalization helps improve the training process.
+    - Converts the image data from unsigned integers (0-255) to floating-point values (0-1) using ```astype(np.float32)``` and division by 255. This normalization helps improve the training process.
 - Adding Channel Dimension:
     - Reshapes the data to add a channel dimension (typically representing colors in RGB images) even though the Fashion-MNIST dataset is grayscale. This is achieved using np.expand_dims(axis=-1).
 - One-Hot Encoding:
-    - Converts the class labels (integers representing categories) into one-hot encoded vectors using keras.utils.to_categorical. This is necessary because the model uses categorical crossentropy loss, which assumes the labels are probability distributions.
+    - Converts the class labels (integers representing categories) into one-hot encoded vectors using ```keras.utils.to_categorical```. This is necessary because the model uses ```categorical-crossentropy``` loss, which assumes the labels are probability distributions.
 
 ``` bash
 # Encoding dataset
@@ -96,12 +99,12 @@ y_test_label = keras.utils.to_categorical(y_test, class_nums)
 
 ### 5. Build the model:
 
-A sequential model is created using keras.models.Sequential.
-Layers in the model:
-Flatten: Flattens the 2D image data into a 1D vector.
-Dense: Fully connected layers with 512, 256, and 128 units, each using the ReLU activation function for non-linearity.
-Dense: Final output layer with the number of units equal to the number of classes (10) and a softmax activation function for probability distribution.
-The model summary provides information about the layers and their parameters.
+- A sequential model is created using ```keras.models.Sequential```.
+- Layers in the model:
+  - ```Flatten```: Flattens the 2D image data into a 1D vector.
+  - ```Dense```: Fully connected layers with 512, 256, and 128 units, each using the ReLU activation function for non-linearity.
+  - ```Dense```: Final output layer with the number of units equal to the number of classes (10) and a softmax activation function for probability distribution.
+  - The model summary provides information about the layers and their parameters.
 
 ``` bash
 input_shape = (28, 28, 1)
@@ -120,7 +123,7 @@ model.summary()
 
 ### 6. Compile the model:
 
-The model is compiled with the sgd optimizer, categorical crossentropy loss function suitable for multi-class classification, and accuracy metric.
+The model is compiled with the ```sgd``` optimizer, ```categorical-crossentropy``` loss function suitable for multi-class classification, and ```accuracy``` metric.
 
 ``` bash
 model.compile(optimizer="sgd",
@@ -130,8 +133,8 @@ model.compile(optimizer="sgd",
 
 ### 7. Train the model:
 
-The model is trained on the training data for 10 epochs (iterations) with a batch size of 128 samples.
-A validation split of 10% is used to monitor performance on unseen data during training.
+- The model is trained on the training data for 10 ```epochs``` (iterations) with a ```batch_size``` of 128 samples.
+- A validation split of 10% is used to monitor performance on unseen data during training.
 
 ``` bash
 epochs = 10
@@ -147,7 +150,7 @@ history = model.fit(X_train, y_train_label,
 
 ### 8. Evaluate the model:
 
-The final model's performance is evaluated on the testing data using model.evaluate, and the loss and accuracy are printed.
+The final model's performance is evaluated on the testing data using ```model.evaluate```, and the loss and accuracy are printed.
 
 ``` bash
 test_loss, test_acc = model.evaluate(X_test, y_test_label)
@@ -157,8 +160,8 @@ print("Accuracy = {0}".format(test_acc))
 
 ### 9. Make predictions:
 
-A random image from the testing set is selected and displayed.
-The model predicts the class of the selected image using model.predict, and the predicted class label is printed.
+- A random image from the testing set is selected and displayed.
+= The model predicts the class of the selected image using ```model.predict```, and the predicted class label is printed.
 
 ``` bash
 # Making a prediction on new data
