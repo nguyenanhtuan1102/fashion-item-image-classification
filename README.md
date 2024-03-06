@@ -2,6 +2,8 @@
 
 This repository contains Python code that utilizes TensorFlow and Keras to build a machine learning model for classifying images from the Fashion-MNIST dataset. The model identifies various clothing items such as t-shirts, trousers, dresses, and more.
 
+![12](https://github.com/tuanng1102/classify-image-with-neural-network-on-fashion-mnist-dataset/assets/147653892/7e1375cd-47be-45f1-bcb8-92d0cbb1224f)
+
 # Dependencies:
 
 - TensorFlow (version compatible with your project)
@@ -66,6 +68,8 @@ def plot_data(X_data: np.ndarray, y_data: np.ndarray) -> None:
 plot_data(X_train, y_train)
 ```
 
+![13](https://github.com/tuanng1102/classify-image-with-neural-network-on-fashion-mnist-dataset/assets/147653892/2ee20c8a-8dee-4476-a3b2-8782075738ab)
+
 ### 4. Preprocessing data:
 
 This section involves several data preparation steps:
@@ -111,6 +115,9 @@ model = keras.models.Sequential([
 model.summary()
 ```
 
+![7](https://github.com/tuanng1102/classify-image-with-neural-network-on-fashion-mnist-dataset/assets/147653892/268fc7e9-7052-4234-bd87-9c4c86f98d85)
+
+
 ### 6. Compile the model:
 
 The model is compiled with the sgd optimizer, categorical crossentropy loss function suitable for multi-class classification, and accuracy metric.
@@ -135,6 +142,8 @@ history = model.fit(X_train, y_train_label,
           validation_split=0.1
 )
 ```
+
+![8](https://github.com/tuanng1102/classify-image-with-neural-network-on-fashion-mnist-dataset/assets/147653892/7dd6d9cb-b69f-4314-9bd1-049a2bcde8f0)
 
 ### 8. Evaluate the model:
 
@@ -163,6 +172,13 @@ print("Handwritten number in the image is = {0}".format(np.argmax(predicted_valu
 history.history.keys()
 ```
 
+![11](https://github.com/tuanng1102/classify-image-with-neural-network-on-fashion-mnist-dataset/assets/147653892/0c5b9a95-d0df-4497-bb62-7b2df268d27c)
+
+``` bash
+# result
+Handwritten number in the image is = Bag
+```
+
 ### 10. Visualize training history:
 
 Two plots are created to visualize the model's training and validation accuracy and loss over epochs.
@@ -187,3 +203,7 @@ plt.ylabel("accuracy/loss")
 plt.legend(["accuracy", "val_accuracy", "loss", "val_loss"])
 plt.show()
 ```
+
+![9](https://github.com/tuanng1102/classify-image-with-neural-network-on-fashion-mnist-dataset/assets/147653892/b3d2d9e4-f49b-47e7-84a8-401981981a81)
+
+![10](https://github.com/tuanng1102/classify-image-with-neural-network-on-fashion-mnist-dataset/assets/147653892/ee59ac17-4ad0-40d9-8cd8-955f9488f7d7)
