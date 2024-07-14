@@ -1,8 +1,8 @@
-# Introduction:
+# FASHION ITEM IMAGES CLASSIFICATION
 
 This repository contains Python code that utilizes ```TensorFlow``` and ```Keras``` to build a machine learning model for classifying images from the Fashion-MNIST dataset. The model identifies various clothing items such as t-shirts, trousers, dresses, and more.
 
-![12](https://github.com/tuanng1102/classify-image-with-neural-network-on-fashion-mnist-dataset/assets/147653892/7e1375cd-47be-45f1-bcb8-92d0cbb1224f)
+![fashion-mnist](https://github.com/user-attachments/assets/e33a2a52-73a6-48dd-ae90-13cdc89a397a)
 
 # Dependencies:
 
